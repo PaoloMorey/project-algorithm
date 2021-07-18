@@ -122,7 +122,9 @@ public:
         if (theo) type = a.getClassroomTheoType();
         else type = a.getClassroomLabType();
         classroom newClassroom(idForNewClassrooms, nameForNewClassrooms + std::to_string(idForNewClassrooms), type);
+        idForNewClassrooms++;
         newClassroom.setExist();
+        newClassroom.setUsed();
         totalClassrooms.push_back(newClassroom);
         available = makeMyPair(a, hours, days, n, m, theo, newClassroom, section);
         return available;
@@ -202,11 +204,11 @@ public:
     void showDistribution() {
         std::cout<<"Existing Classrooms\n";
         for (auto & i : existingClassroomsNeeded) {
-            std::cout<<i.second << "\n";
+            std::cout<<i.first<<" "<<i.second << "\n";
         }
         std::cout<<"Non-Existing Classrooms\n";
         for (auto & i : notExistingClassroomsNeeded) {
-            std::cout<<i.second << "\n";
+            std::cout<<i.first<<" "<<i.second << "\n";
         }
     }
 
