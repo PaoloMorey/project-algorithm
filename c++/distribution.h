@@ -45,7 +45,7 @@ public:
             a.fillHour(b, i, day, section);
             updateClassroom(a);
         }
-        float key = beginTime + day * 0.10;
+        float key = beginTime + day * 0.01;
         std::unordered_map<int, bool> crosses;
         crosses[section] = true;
         distributionElem elem{b.getMajor(), b.getSemester(), crosses};
@@ -71,7 +71,7 @@ public:
     }
 
     bool checkCrossing(int i, int j, int section, course &a) {
-        float key = i + j * 0.10;
+        float key = i + j * 0.01;
         if (crossingOfSchedules.find(key) == crossingOfSchedules.end()) return true;
         else {
             std::vector<distributionElem> vec = crossingOfSchedules[key];
